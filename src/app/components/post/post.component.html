@@ -1,0 +1,45 @@
+
+<a routerLink="/post/{{post.id}}"><img src="{{post.image}}" alt=""></a>
+<!-- <img src="{{post.image}}" alt="" srcset=""> -->
+
+<p class="title"><a class="post-link" routerLink="/post/{{post.id}}">{{post.title | titlecase}}</a></p>
+<div class="post-details">
+    <div class="left">
+
+        <p *ngIf="post.creator; else unknown">
+
+            {{post.creator.name}}                    
+
+            <!-- <span>{{ post.creator.isOnline ? 'online' : 'offline' }}</span> -->
+
+            <span [ngClass]="post.creator!.isOnline ? 'online' : 'offline'">{{post.creator!.isOnline ? 'On' : 'Off'}}</span>
+            
+
+            <button [class]="'follow-btn'" *ngIf="! post.creator.isFollowing; else follow" (click)="incrementFollowers(post.creator.id)">Follow</button>
+            <ng-template #follow>
+                <button [class]="'unfollow-btn'" (click)="decrementFollowers(post.creator.id)">UnFollow</button>
+            </ng-template>
+        </p>
+
+        <ng-template #unknown>
+            <p>
+                Unknown
+            </p>
+        </ng-template>
+        
+        
+
+    </div>
+    <div class="right">
+        <div *ngIf="post.creator; else unknownlikes">
+            <p>Followers: {{post.creator!.followers}}</p>
+            <p>likes: {{post.likes}}</p>
+        </div>
+
+        <ng-template #unknownlikes>
+            <p>
+                Unknown
+            </p>
+        </ng-template>
+    </div>
+</div>

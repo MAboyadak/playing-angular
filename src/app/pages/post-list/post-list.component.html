@@ -1,0 +1,20 @@
+<app-main-nav (queryEmitter)="filterPosts($event)"></app-main-nav>
+
+<div class="container posts-container">
+
+    <div *ngIf="getPosts().length > 0 ;then data else nodata" ></div>
+
+    <ng-template #data>
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4 xcard" *ngFor="let post of getPosts()">
+                <app-post [post]="post" (incEmitter)="onIncrement($event)" (decEmitter)="onDecrement($event)"></app-post>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #nodata>
+        no data
+    </ng-template>
+    
+
+</div>

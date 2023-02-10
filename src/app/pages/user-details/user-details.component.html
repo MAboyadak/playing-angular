@@ -1,0 +1,28 @@
+<!-- <app-user [user]="getUser()"></app-user> -->
+
+<app-user [user]="getUser()"></app-user>
+
+<br><hr><br>
+<h1 class="text-center bg-success text-white p-4">POSTS</h1>
+<br><hr><br>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-4" *ngFor="let post of getPosts()">
+            <app-post [post]="post" (incEmitter)="onIncrement($event)" (decEmitter)="onDecrement($event)"></app-post>           
+        </div>
+    </div>
+
+</div>
+
+<br><hr><br>
+<h1 class="text-center bg-success text-white p-4">New Post</h1>
+<br><hr><br>
+
+<div class="container">
+    <app-create-post [user]="getUser()"></app-create-post>
+</div>
+
+
+

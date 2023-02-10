@@ -1,0 +1,15 @@
+<form (ngSubmit)="onSubmit(create_form)" #create_form="ngForm" class="mb-5">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Title</label>
+      <input type="text" class="form-control" name="title" ngModel>
+    </div>
+
+    <input type="hidden" class="form-control" name="userid" value="{{user.id}}" ngModel>
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Body</label>
+      <input type="text" class="form-control" name="body" ngModel>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Create</button>
+</form>
